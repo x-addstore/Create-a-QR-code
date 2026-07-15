@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สร้าง คิวอาโค้ด ฟรี</title>
+    <!-- Google Fonts: Inter & Sarabun for premium editorial typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for clean, sharp icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --primary: #0f172a; /* Deep Slate Navy - Professional & Mature */
+            --primary-hover: #334155;
+            --border-color: #e2e8f0;
+            --accent: #2563eb;
+            --focus-ring: rgba(37, 99, 235, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Sarabun', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+        }
+
+        /* Main Container */
+        .wrapper {
+            width: 100%;
+            max-width: 460px;
+            margin: auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 
+                        0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        /* Header design: Sophisticated, clean and corporate */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header .logo-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Input styling: Sharp, minimalist & sleek */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .input-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--focus-ring);
+        }
+
+        .input-control::placeholder {
+            color: #94a3b8;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.99);
+        }
+
+        /* Result Area */
+        .result-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .qr-wrapper {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-wrapper img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Secondary Button (Download) */
+        .btn-download {
+            width: 100%;
+            padding: 12px;
+            background-color: #f1f5f9;
+            color: var(--primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-download:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Loading Animation */
+        .spinner {
+            display: none;
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(15, 23, 42, 0.08);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 24px auto 0 auto;
+        }
+
+        /* Minimalist Footer Contact Admin */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+            background-color: #e2e8f0;
+        }
+
+        /* Micro-interactions & Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="card">
+            <!-- Header -->
+            <div class="header">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <h1>เว็บไซต์ QR Code ใช้งานฟรี</h1>
+                <p>สร้างคิวอาโค้ด สแกนแบบไม่เข้าเว็บ 2 ชั้น</p>
+            </div>
+
+            <!-- Form (Only URL) -->
+            <div class="form-group">
+                <label for="url-input">ระบุลิงก์ หรือ ข้อความที่ต้องการสร้าง</label>
+                <input type="url" id="url-input" class="input-control" placeholder="เช่น https://example.com" autocomplete="off" required>
+            </div>
+
+            <!-- Action Button -->
+            <button id="generate-btn" class="btn-primary">
+                <span>สร้าง QR Code</span>
+            </button>
+
+            <!-- Spinner -->
+            <div id="spinner" class="spinner"></div>
+
+            <!-- Result (QR Image & Download) -->
+            <div id="result-area" class="result-section">
+                <div class="qr-wrapper">
+                    <img id="qr-display" src="" alt="QR Code">
+                </div>
+                <button id="download-btn" class="btn-download">
+                    <i class="fa-solid fa-arrow-down-to-bracket"></i>
+                    <span>ดาวน์โหลดรูปภาพ</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sophisticated Footer Link -->
+        <div class="footer">
+            <a href="https://www.facebook.com/chayanant.krk" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fa-brands fa-facebook-f"></i> ติดต่อผู้ดูแลระบบ (Admin)
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const urlInput = document.getElementById('url-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const spinner = document.getElementById('spinner');
+        const resultArea = document.getElementById('result-area');
+        const qrDisplay = document.getElementById('qr-display');
+        const downloadBtn = document.getElementById('download-btn');
+
+        let currentQrUrl = "";
+
+        // Generate Action
+        generateBtn.addEventListener('click', handleGeneration);
+        urlInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleGeneration();
+        });
+
+        function handleGeneration() {
+            const inputValue = urlInput.value.trim();
+
+            if (!inputValue) {
+                alert("กรุณากรอกลิงก์หรือข้อมูลที่ต้องการสร้าง");
+                urlInput.focus();
+                return;
+            }
+
+            // UI feedback transition
+            resultArea.style.display = "none";
+            spinner.style.display = "block";
+
+            // API URL Configuration (High resolution 500x500 is set by default in background)
+            currentQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(inputValue)}`;
+
+            // Load Image securely
+            qrDisplay.src = currentQrUrl;
+            qrDisplay.onload = () => {
+                spinner.style.display = "none";
+                resultArea.style.display = "flex";
+            };
+
+            qrDisplay.onerror = () => {
+                spinner.style.display = "none";
+                alert("ไม่สามารถเชื่อมต่อกับบริการสร้าง QR Code ได้ในขณะนี้");
+            };
+        }
+
+        // Direct Download Action
+        downloadBtn.addEventListener('click', async () => {
+            if (!currentQrUrl) return;
+
+            try {
+                const response = await fetch(currentQrUrl);
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+
+                const anchor = document.createElement('a');
+                anchor.href = blobUrl;
+                anchor.download = `QR_Code_${Date.now()}.png`;
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+                URL.revokeObjectURL(blobUrl);
+            } catch (error) {
+                // Fallback to open image in new tab if CORS prevents direct download
+                window.open(currentQrUrl, '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
